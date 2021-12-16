@@ -111,6 +111,8 @@
     initExtra = ''
       bindkey '^[[A' up-line-or-search
       bindkey '^[[B' down-line-or-search
+      bindkey "^[[H" beginning-of-line
+      bindkey "^[[F" end-of-line
       '';
   };
   
