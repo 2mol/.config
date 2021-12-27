@@ -5,7 +5,7 @@
 
   home.packages = with pkgs; [
     # Unix tools
-    git htop tmux mosh #neovim
+    git htop tmux tmate mosh #neovim
     curl curlie httpie wget aria2
     unar killall sshfs
 
@@ -14,7 +14,7 @@
     ripgrep fd fzf bat exa jq
     shellcheck entr watch
     sqlite-interactive
-    qrencode
+    qrencode youtube-dl
     imagemagick graphviz ffmpeg
 
     # nix-y shit
@@ -33,7 +33,7 @@
     #dotnet-sdk_6
 
     # fonts
-    meslo-lgs-nf
+    iosevka-bin meslo-lgs-nf
   ];
 
   programs.neovim = {
@@ -113,6 +113,8 @@
       bindkey '^[[B' down-line-or-search
       bindkey "^[[H" beginning-of-line
       bindkey "^[[F" end-of-line
+
+      export PATH=/opt/homebrew/bin:$PATH
       '';
   };
   
