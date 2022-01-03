@@ -23,6 +23,7 @@
 
     # programs, dev
     zola restic
+    redoc-cli
     #wezterm
     #miniserve
     google-cloud-sdk
@@ -115,6 +116,7 @@
       bindkey "^[[F" end-of-line
 
       export PATH=/opt/homebrew/bin:$PATH
+      export PATH=$HOME/.local/bin:$PATH
       '';
   };
   
