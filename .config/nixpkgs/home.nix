@@ -5,7 +5,7 @@
 
   home.packages = with pkgs; [
     # Unix tools
-    git htop tmux tmate mosh #neovim
+    git htop tmux tmate coreutils #neovim
     curl curlie httpie wget aria2
     unar killall sshfs
 
@@ -34,7 +34,7 @@
     #dotnet-sdk_6
 
     # fonts
-    iosevka-bin meslo-lgs-nf
+    meslo-lgs-nf iosevka-bin hack-font
   ];
 
   programs.neovim = {
@@ -93,6 +93,7 @@
       ls = "exa --group-directories-first";
       ll = "exa -l --group-directories-first";
       la = "exa -la --group-directories-first";
+      less = "less -R"; # TODO: this prob only works on mac
       tf = "terraform";
       config = "git --git-dir=$HOME/.cfg/ --work-tree=$HOME";
     };
