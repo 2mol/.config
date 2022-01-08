@@ -35,6 +35,7 @@
 
     # fonts
     meslo-lgs-nf iosevka-bin hack-font
+    ibm-plex inter
   ];
 
   programs.neovim = {
