@@ -99,6 +99,12 @@
       config = "git --git-dir=$HOME/.cfg/ --work-tree=$HOME";
     };
 
+    oh-my-zsh = {
+      enable = true;
+      plugins = [ "git" ];
+      #theme = "robbyrussell";
+    };
+
     plugins = [
       {
         name = "powerlevel10k";
