@@ -123,6 +123,8 @@
       bindkey "^[[H" beginning-of-line
       bindkey "^[[F" end-of-line
 
+      setopt no_auto_remove_slash
+
       export PATH=/opt/homebrew/bin:$PATH
       export PATH=$HOME/.local/bin:$PATH
       '';
