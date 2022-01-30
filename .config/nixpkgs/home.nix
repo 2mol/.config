@@ -21,16 +21,14 @@
     cachix
     direnv nix-direnv
 
-    # programs, dev
+    # dev
     zola restic
-    redoc-cli
-    #wezterm
-    #miniserve
+    redoc-cli ngrok
+    docker colima
     google-cloud-sdk
-    yarn terraform
-
-    # languages
+    terraform
     python39 python39Packages.mypy
+    yarn
     #dotnet-sdk_6
 
     # fonts
