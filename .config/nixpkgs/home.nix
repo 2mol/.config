@@ -25,11 +25,11 @@
     # dev
     zola restic
     redoc-cli ngrok
-    docker colima
-    google-cloud-sdk
-    terraform
-    python39 python39Packages.mypy
-    yarn
+    #docker colima
+    #google-cloud-sdk
+    #terraform
+    #python39 python39Packages.mypy
+    #yarn
     #dotnet-sdk_6
 
     # fonts
