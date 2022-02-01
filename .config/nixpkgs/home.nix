@@ -4,8 +4,9 @@
   nixpkgs.config.allowUnfree = true;
 
   home.packages = with pkgs; [
-    # Unix tools
-    git htop tmux tmate coreutils #neovim
+    # Unix basics
+    git git-lfs
+    htop tmux tmate coreutils #neovim
     curl curlie httpie wget aria2
     unar killall sshfs
 
@@ -64,10 +65,26 @@
     '';
   };
 
+  programs.ssh.extraConfig = ''
+    Host github-work
+      Hostname github.com
+      User jurichome
+      IdentityFile ~/.ssh/id_ed25519_work
+    Host github-private
+      Hostname github.com
+      User 2mol
+      IdentityFile ~/.ssh/id_ed25519
+    Host *
+      UseKeychain yes
+      AddKeysToAgent yes
+      IdentityFile ~/.ssh/id_ed25519
+      IdentityFile ~/.ssh/id_ed25519_work
+  '';
+
   programs.git = {
     enable = true;
-    userName = "2mol";
-    userEmail = "2mol@users.noreply.github.com";
+    #userName = "2mol";
+    #userEmail = "2mol@users.noreply.github.com";
     extraConfig = {
       core.editor = "vim";
       pull.rebase = true;
