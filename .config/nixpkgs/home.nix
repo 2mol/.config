@@ -57,6 +57,13 @@
       set number
       set hlsearch
       colorscheme gruvbox8
+      
+      set tabstop=4       " number of visual spaces per TAB
+      set softtabstop=4   " number of spaces in tab when editing
+      set shiftwidth=4    " number of spaces to use for autoindent
+      set expandtab       " tabs are space
+      set autoindent
+      set copyindent      " copy indent from the previous line
 
       nnoremap <leader>ff <cmd>Telescope find_files<cr>
       nnoremap <leader>fg <cmd>Telescope live_grep<cr>
@@ -64,22 +71,6 @@
       nnoremap <leader>fh <cmd>Telescope help_tags<cr>
     '';
   };
-
-  programs.ssh.extraConfig = ''
-    Host github-work
-      Hostname github.com
-      User jurichome
-      IdentityFile ~/.ssh/id_ed25519_work
-    Host github-private
-      Hostname github.com
-      User 2mol
-      IdentityFile ~/.ssh/id_ed25519
-    Host *
-      UseKeychain yes
-      AddKeysToAgent yes
-      IdentityFile ~/.ssh/id_ed25519
-      IdentityFile ~/.ssh/id_ed25519_work
-  '';
 
   programs.git = {
     enable = true;
