@@ -134,7 +134,8 @@
       export PATH=/opt/homebrew/bin:$PATH
       export PATH=$HOME/.local/bin:$PATH
 
-      source $HOME/.waverc
+      source $HOME/.ghcup/env 2> /dev/null
+      source $HOME/.waverc 2> /dev/null
       '';
   };
   
