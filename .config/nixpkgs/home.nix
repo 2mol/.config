@@ -74,12 +74,16 @@
 
   programs.git = {
     enable = true;
-    #userName = "2mol";
-    #userEmail = "2mol@users.noreply.github.com";
+    lfs.enable = true;
     extraConfig = {
       core.editor = "vim";
-      pull.rebase = true;
       init.defaultBranch = "main";
+      pull.rebase = true;
+    };
+    aliases = {
+      undo = "reset HEAD~1 --mixed";
+      amend = "commit -a --amend";
+      co = "checkout";
     };
   };
 
@@ -133,6 +137,10 @@
 
       export PATH=/opt/homebrew/bin:$PATH
       export PATH=$HOME/.local/bin:$PATH
+
+      if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+        . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+      fi
 
       source $HOME/.ghcup/env 2> /dev/null
       source $HOME/.waverc 2> /dev/null
