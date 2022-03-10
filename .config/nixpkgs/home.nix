@@ -15,8 +15,9 @@
     ripgrep fd fzf bat exa jq
     shellcheck entr watch
     sqlite-interactive
-    qrencode youtube-dl
+    qrencode yt-dlp
     imagemagick graphviz ffmpeg
+    pspg
 
     # nix-y shit
     cachix
@@ -25,8 +26,8 @@
     # dev
     zola restic
     redoc-cli ngrok
-    #docker colima
-    #google-cloud-sdk
+    docker colima
+    google-cloud-sdk
     terraform
     #python39 python39Packages.mypy
     #yarn
@@ -89,6 +90,7 @@
 
   home.sessionVariables = {
     EDITOR = "vim";
+    #PAGER = "pspg --force-uniborder -s 23";
   };
 
   programs.home-manager = {
