@@ -17,14 +17,14 @@
     sqlite-interactive
     qrencode yt-dlp
     imagemagick graphviz ffmpeg
-    pspg
+    opusTools vorbis-tools
 
     # nix-y shit
     cachix
     direnv nix-direnv
 
     # dev
-    zola restic
+    zola restic pspg
     redoc-cli ngrok
     docker colima
     google-cloud-sdk
@@ -78,6 +78,7 @@
     lfs.enable = true;
     extraConfig = {
       core.editor = "vim";
+      core.excludesfile = "~/.gitignore";
       init.defaultBranch = "main";
       pull.rebase = true;
     };
