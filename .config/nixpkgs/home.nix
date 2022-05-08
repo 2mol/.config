@@ -33,7 +33,7 @@
 
     # fonts
     meslo-lgs-nf iosevka-bin hack-font
-    ibm-plex inter
+    ibm-plex inter jetbrains-mono
   ];
 
   programs.neovim = {
