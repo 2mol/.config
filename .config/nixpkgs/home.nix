@@ -6,7 +6,7 @@
   home.packages = with pkgs; [
     # Unix basics
     git git-lfs
-    htop tmux tmate coreutils #neovim
+    htop tmux tmate coreutils
     curl curlie httpie wget aria2
     unar killall sshfs
 
@@ -24,14 +24,12 @@
     direnv nix-direnv
 
     # dev
-    zola restic pspg
+    zola restic
     redoc-cli ngrok
     docker colima
     google-cloud-sdk
     terraform
-    #python39 python39Packages.mypy
-    #yarn
-    #dotnet-sdk_6
+    dbmate pspg pgcli
 
     # fonts
     meslo-lgs-nf iosevka-bin hack-font
@@ -115,7 +113,6 @@
     oh-my-zsh = {
       enable = true;
       plugins = [ "git" ];
-      #theme = "robbyrussell";
     };
 
     plugins = [
@@ -146,6 +143,7 @@
       fi
 
       source $HOME/.ghcup/env 2> /dev/null
+      source $HOME/.env 2> /dev/null
       source $HOME/.waverc 2> /dev/null
       '';
   };
