@@ -14,7 +14,7 @@
     # other useful basic tools
     ripgrep fd fzf bat exa jq
     shellcheck entr watch
-    sqlite-interactive
+    sqlite-interactive litecli
     qrencode yt-dlp
     imagemagick graphviz ffmpeg
     opusTools vorbis-tools
@@ -26,7 +26,7 @@
     # dev
     zola restic
     redoc-cli ngrok
-    docker colima
+    #docker colima
     google-cloud-sdk
     terraform
     dbmate pspg pgcli
