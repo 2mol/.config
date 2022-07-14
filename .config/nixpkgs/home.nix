@@ -3,11 +3,16 @@
 {
   nixpkgs.config.allowUnfree = true;
 
+  home.stateVersion = "22.05";
+  home.username = "juri";
+  home.homeDirectory = "/Users/juri/";
+
   home.packages = with pkgs; [
     # Unix basics
     git git-lfs
     htop tmux tmate coreutils
-    curl curlie httpie wget aria2
+    curl wget
+    #curlie httpie aria2
     unar killall sshfs
 
     # Nu-Unix excellence and
@@ -15,22 +20,24 @@
     ripgrep fd fzf bat exa jq
     shellcheck entr watch
     sqlite-interactive litecli
-    qrencode yt-dlp
+    qrencode
+    #yt-dlp
     imagemagick graphviz ffmpeg
-    opusTools vorbis-tools
+    #opusTools vorbis-tools
 
     # nix-y shit
-    cachix
+    #cachix
     direnv nix-direnv lorri
 
     # dev
     zola restic
-    redoc-cli ngrok
+    #redoc-cli
+    ngrok
     #docker colima
     google-cloud-sdk
-    terraform
+    #terraform
     dbmate pspg pgcli
-    flyctl
+    #flyctl
     lazygit
 
     # fonts
@@ -112,6 +119,12 @@
       tf = "terraform";
       config = "git --git-dir=$HOME/.cfg/ --work-tree=$HOME";
     };
+    history.size = 1000000;
+
+    localVariables = {
+      # thisable this utter piece of shit bullshit oh-my-zsh default:
+      DISABLE_MAGIC_FUNCTIONS=true;
+    };
 
     oh-my-zsh = {
       enable = true;
@@ -130,6 +143,7 @@
         file = "p10k.zsh";
       }
     ];
+
     initExtra = ''
       bindkey '^[[A' up-line-or-search
       bindkey '^[[B' down-line-or-search
@@ -140,6 +154,8 @@
 
       export PATH=/opt/homebrew/bin:$PATH
       export PATH=$HOME/.local/bin:$PATH
+      export PATH=$HOME/.ghcup/bin:$PATH
+      export PATH=$HOME/.cabal/bin:$PATH
 
       if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
         . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
@@ -148,6 +164,8 @@
       source $HOME/.ghcup/env 2> /dev/null
       source $HOME/.env 2> /dev/null
       source $HOME/.waverc 2> /dev/null
+
+      eval "$(rbenv init - zsh)" 2> /dev/null
       '';
   };
   
