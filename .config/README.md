@@ -1,5 +1,6 @@
+# Juri's "dotfiles"
 
-taken from https://www.mathiaspolligkeit.com/dev/exploring-nix-on-macos/
+
 
 ## initial setup
 
@@ -16,6 +17,7 @@ config commit -m "add nix configuration"
 
 -> add a remote
 
+
 ## new machine:
 
 ```bash
@@ -24,3 +26,26 @@ alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 config config --local status.showUntrackedFiles no
 config checkout
 ```
+
+
+## nix
+
+Install first home-manager flake:
+
+```
+nix build --no-link ~/.config/nixpkgs#homeConfigurations.juri.activationPackage
+```
+
+Update and switch:
+
+```
+nix flake update ~/.config/nixpkgs
+home-manager switch --flake ~/.config/nixpkgs#juri
+```
+
+
+
+## references
+
+- https://www.mathiaspolligkeit.com/dev/exploring-nix-on-macos/
+
