@@ -32,11 +32,11 @@
     # dev
     zola restic
     #redoc-cli
-    ngrok
+    # (unfree) ngrok
     #docker colima
-    google-cloud-sdk
+    #google-cloud-sdk
     #terraform
-    dbmate pspg pgcli
+    # (temp broken) dbmate pspg pgcli
     #flyctl
     lazygit
 
@@ -88,11 +88,11 @@
       core.excludesfile = "~/.gitignore";
       init.defaultBranch = "main";
       pull.rebase = true;
+      push.autoSetupRemote = true;
     };
     aliases = {
       undo = "reset HEAD~1 --mixed";
       amend = "commit -a --amend";
-      co = "checkout";
       lg = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
     };
   };
