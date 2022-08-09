@@ -2,6 +2,7 @@
 
 {
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfreePredicate = (pkg: true);
 
   home.stateVersion = "22.05";
   home.username = "juri";
@@ -12,33 +13,33 @@
     git git-lfs
     htop tmux tmate coreutils
     curl wget
-    #curlie httpie aria2
+    httpie aria2
     unar killall sshfs
 
-    # Nu-Unix excellence and
-    # other useful basic tools
+    # Nu-Unix excellence
     ripgrep fd fzf bat exa jq
+    glow
+
+    # other useful tools
     shellcheck entr watch
     sqlite-interactive litecli
-    qrencode
-    #yt-dlp
+    qrencode # image_optim (not supported on M1)
     imagemagick graphviz ffmpeg
-    #opusTools vorbis-tools
+    yt-dlp
+    opusTools vorbis-tools
 
-    # nix-y shit
-    #cachix
-    direnv nix-direnv lorri
+    # Nix utils
+    direnv nix-direnv
 
-    # dev
+    # dev and random nice-to-haves
     zola restic
-    #redoc-cli
-    # (unfree) ngrok
+    ngrok
     #docker colima
-    #google-cloud-sdk
-    #terraform
-    # (temp broken) dbmate pspg pgcli
-    #flyctl
+    pspg # (broken) pgcli dbmate
     lazygit
+
+    # Wave
+    yarn # semgrep (no M1)
 
     # fonts
     meslo-lgs-nf iosevka-bin hack-font
@@ -118,11 +119,13 @@
       less = "less -R"; # TODO: this prob only works on mac
       tf = "terraform";
       config = "git --git-dir=$HOME/.cfg/ --work-tree=$HOME";
+      config-help = "glow $HOME/.config/README.md";
     };
     history.size = 1000000;
 
     localVariables = {
-      # thisable this utter piece of shit bullshit oh-my-zsh default:
+      # disable this utter piece of shit oh-my-zsh default (it inserts some
+      # stuff when copy-pasting URLs for example)
       DISABLE_MAGIC_FUNCTIONS=true;
     };
 
