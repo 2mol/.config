@@ -14,7 +14,7 @@
     htop tmux tmate coreutils
     curl wget
     httpie aria2
-    unar killall sshfs
+    unar killall sshfs parallel
 
     # Nu-Unix excellence
     ripgrep fd fzf bat exa jq
@@ -30,6 +30,7 @@
 
     # Nix utils
     direnv nix-direnv
+    nixpacks
 
     # dev and random nice-to-haves
     zola restic
@@ -159,6 +160,8 @@
       export PATH=$HOME/.local/bin:$PATH
       export PATH=$HOME/.ghcup/bin:$PATH
       export PATH=$HOME/.cabal/bin:$PATH
+
+      export HAXE_STD_PATH="/opt/homebrew/lib/haxe/std"
 
       if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
         . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
