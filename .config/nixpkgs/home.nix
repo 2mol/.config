@@ -95,6 +95,7 @@
     aliases = {
       undo = "reset HEAD~1 --mixed";
       amend = "commit -a --amend";
+      sw = "switch";
       lg = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
     };
   };
