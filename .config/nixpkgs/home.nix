@@ -37,6 +37,7 @@
     ngrok
     #docker colima
     pspg # (broken) pgcli dbmate
+    sqlfluff
     lazygit
 
     # Wave
