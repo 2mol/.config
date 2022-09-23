@@ -15,6 +15,7 @@
     curl wget
     httpie aria2
     unar killall sshfs parallel
+    difftastic
 
     # Nu-Unix excellence
     ripgrep fd fzf bat exa jq
@@ -37,8 +38,8 @@
     ngrok
     #docker colima
     pspg # (broken) pgcli dbmate
-    sqlfluff
     lazygit
+    elmPackages.elm-format
 
     # Wave
     yarn # semgrep (no M1)
@@ -92,10 +93,12 @@
       init.defaultBranch = "main";
       pull.rebase = true;
       push.autoSetupRemote = true;
+      diff.external = "difft";
     };
     aliases = {
       undo = "reset HEAD~1 --mixed";
       amend = "commit -a --amend";
+      co = "checkout";
       sw = "switch";
       lg = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
     };
