@@ -55,11 +55,8 @@
     plugins = with pkgs.vimPlugins; [
       vim-lastplace
       vim-gruvbox8
-      telescope-nvim
       nvim-treesitter
       vim-nix
-      vim-terraform
-      vim-terraform-completion
     ];
     extraConfig = ''
       let mapleader="'"
@@ -76,11 +73,6 @@
       set expandtab       " tabs are space
       set autoindent
       set copyindent      " copy indent from the previous line
-
-      nnoremap <leader>ff <cmd>Telescope find_files<cr>
-      nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-      nnoremap <leader>fb <cmd>Telescope buffers<cr>
-      nnoremap <leader>fh <cmd>Telescope help_tags<cr>
     '';
   };
 
@@ -105,7 +97,7 @@
   };
 
   home.sessionVariables = {
-    EDITOR = "vim";
+    EDITOR = "nvim";
     #PAGER = "pspg --force-uniborder -s 23";
   };
 
