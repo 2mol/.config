@@ -4,7 +4,7 @@
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowUnfreePredicate = (pkg: true);
 
-  home.stateVersion = "22.05";
+  home.stateVersion = "22.11";
   home.username = "juri";
   home.homeDirectory = "/Users/juri/";
 
@@ -13,17 +13,17 @@
     git git-lfs
     htop tmux tmate coreutils
     curl wget
-    httpie aria2
+    aria2 # httpie
     unar killall sshfs parallel
     difftastic
 
     # Nu-Unix excellence
     ripgrep fd fzf bat exa jq
-    glow
+    micro glow
 
     # other useful tools
     shellcheck entr watch
-    sqlite-interactive litecli
+    sqlite-interactive sqlite-utils # dbmate
     qrencode # image_optim (not supported on M1)
     imagemagick graphviz ffmpeg
     yt-dlp
@@ -103,7 +103,7 @@
 
   programs.home-manager = {
     enable = true;
-    path = "…";
+    # path = "…";
   };
   
   programs.zsh = {
@@ -118,6 +118,8 @@
       tf = "terraform";
       config = "git --git-dir=$HOME/.cfg/ --work-tree=$HOME";
       config-help = "glow $HOME/.config/README.md";
+      config-update = "nix flake update ~/.config/nixpkgs";
+      config-switch = "home-manager switch --flake ~/.config/nixpkgs#juri";
     };
     history.size = 1000000;
 
@@ -155,16 +157,11 @@
 
       export PATH=/opt/homebrew/bin:$PATH
       export PATH=$HOME/.local/bin:$PATH
-      export PATH=$HOME/.ghcup/bin:$PATH
-      export PATH=$HOME/.cabal/bin:$PATH
-
-      export HAXE_STD_PATH="/opt/homebrew/lib/haxe/std"
 
       if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
         . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
       fi
 
-      source $HOME/.ghcup/env 2> /dev/null
       source $HOME/.env 2> /dev/null
       source $HOME/.waverc 2> /dev/null
 
