@@ -27,7 +27,14 @@ config config --local status.showUntrackedFiles no
 config checkout
 ```
 
+...then install home-manager
 
 ## nix
 
-idk, read home-manager docs
+update installed packages:
+
+```bash
+nix flake update ~/.config/home-manager
+home-manager switch
+```
+
