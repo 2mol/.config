@@ -28,8 +28,8 @@
     difftastic
 
     # Nu-Unix excellence
-    ripgrep fd fzf bat exa jq
-    micro glow
+    ripgrep fd fzf bat eza jq
+    micro glow helix
 
     # other useful tools
     shellcheck entr watch
@@ -44,7 +44,7 @@
     nixpacks
 
     # dev and random nice-to-haves
-    zola restic
+    zola #restic
     ngrok
     #docker colima
     pspg # (broken) pgcli dbmate
@@ -52,7 +52,7 @@
     elmPackages.elm-format
 
     # Wave
-    yarn # semgrep (no M1)
+    yarn vault # semgrep (no M1)
 
     # fonts
     meslo-lgs-nf iosevka-bin hack-font
@@ -197,6 +197,7 @@
 
       export PATH=/opt/homebrew/bin:$PATH
       export PATH=$HOME/.local/bin:$PATH
+      export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 
       if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
         . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
