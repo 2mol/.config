@@ -152,10 +152,10 @@
     enable = true;
     enableCompletion = true;
     shellAliases = {
-      l = "exa --group-directories-first";
-      ls = "exa --group-directories-first";
-      ll = "exa -l --group-directories-first";
-      la = "exa -la --group-directories-first";
+      l = "eza --group-directories-first";
+      ls = "eza --group-directories-first";
+      ll = "eza -l --group-directories-first";
+      la = "eza -la --group-directories-first";
       less = "less -R"; # TODO: this prob only works on mac
       tf = "terraform";
       config = "git --git-dir=$HOME/.cfg/ --work-tree=$HOME";
