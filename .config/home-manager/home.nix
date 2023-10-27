@@ -19,8 +19,9 @@
   nixpkgs.config.allowUnfreePredicate = (pkg: true);
 
   home.packages = with pkgs; [
+    nix-info
     # Unix basics
-    git git-lfs
+    git git-lfs git-crypt
     htop tmux tmate coreutils
     curl wget
     aria2 # httpie
@@ -33,7 +34,8 @@
 
     # other useful tools
     shellcheck entr watch
-    sqlite-interactive sqlite-utils # dbmate
+    sqlite-interactive sqlite-utils
+    xmlstarlet
     qrencode # image_optim (not supported on M1)
     imagemagick graphviz ffmpeg
     yt-dlp
@@ -47,12 +49,18 @@
     zola #restic
     ngrok
     #docker colima
-    pspg # (broken) pgcli dbmate
+    pspg # (still broken?) pgcli
     lazygit
-    elmPackages.elm-format
 
     # Wave
     yarn vault # semgrep (no M1)
+    google-cloud-sdk
+    redis
+    openjdk
+    rbenv
+    pyenv
+    watchman
+    pgcli
 
     # fonts
     meslo-lgs-nf iosevka-bin hack-font
@@ -207,6 +215,10 @@
       source $HOME/.waverc 2> /dev/null
 
       eval "$(rbenv init - zsh)" 2> /dev/null
+
+      # eval "$(direnv hook zsh)"
+      
+      zmodload zsh/zprof
       '';
   };
 

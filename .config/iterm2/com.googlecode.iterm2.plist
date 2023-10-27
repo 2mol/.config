@@ -8,6 +8,8 @@
 	<string>4B72CAFB-ADC5-4587-8F15-C3ED6D2C00E7</string>
 	<key>HapticFeedbackForEsc</key>
 	<false/>
+	<key>HideScrollbar</key>
+	<true/>
 	<key>HotkeyMigratedFromSingleToMulti</key>
 	<true/>
 	<key>NeverWarnAboutShortLivedSessions_4B72CAFB-ADC5-4587-8F15-C3ED6D2C00E7</key>
