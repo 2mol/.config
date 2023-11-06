@@ -214,10 +214,6 @@
       source $HOME/.env 2> /dev/null
       source $HOME/.waverc 2> /dev/null
 
-      eval "$(rbenv init - zsh)" 2> /dev/null
-
-      # eval "$(direnv hook zsh)"
-      
       zmodload zsh/zprof
       '';
   };
