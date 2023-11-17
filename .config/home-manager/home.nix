@@ -27,6 +27,10 @@
     aria2 # httpie
     unar killall sshfs parallel
     difftastic
+    pandoc
+
+    # dosbox-staging
+    dosbox-x
 
     # Nu-Unix excellence
     ripgrep fd fzf bat eza jq
@@ -37,7 +41,7 @@
     sqlite-interactive sqlite-utils
     xmlstarlet
     qrencode # image_optim (not supported on M1)
-    imagemagick graphviz ffmpeg
+    graphviz ffmpeg imagemagick
     yt-dlp
     opusTools vorbis-tools
 
@@ -54,13 +58,13 @@
 
     # Wave
     yarn vault # semgrep (no M1)
-    google-cloud-sdk
+    (google-cloud-sdk.withExtraComponents [google-cloud-sdk.components.gke-gcloud-auth-plugin])
     redis
     openjdk
-    rbenv
-    pyenv
+    rbenv pyenv
     watchman
     pgcli
+    yamlfmt
 
     # fonts
     meslo-lgs-nf iosevka-bin hack-font
@@ -169,7 +173,6 @@
       config = "git --git-dir=$HOME/.cfg/ --work-tree=$HOME";
       config-help = "glow $HOME/.config/README.md";
     };
-    history.size = 1000000;
 
     localVariables = {
       # disable this utter piece of shit oh-my-zsh default (it inserts some
@@ -196,6 +199,14 @@
     ];
 
     initExtra = ''
+      HISTFILE=$HOME/.zsh_history_uncut
+      HISTSIZE=999999
+      SAVEHIST=999999
+      setopt appendhistory
+      setopt INC_APPEND_HISTORY  
+      setopt SHARE_HISTORY
+      setopt HIST_SAVE_NO_DUPS
+
       bindkey '^[[A' up-line-or-search
       bindkey '^[[B' down-line-or-search
       bindkey "^[[H" beginning-of-line
@@ -211,10 +222,7 @@
         . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
       fi
 
-      source $HOME/.env 2> /dev/null
       source $HOME/.waverc 2> /dev/null
-
-      zmodload zsh/zprof
       '';
   };
 
