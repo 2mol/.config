@@ -8,8 +8,6 @@
 	<string>4B72CAFB-ADC5-4587-8F15-C3ED6D2C00E7</string>
 	<key>HapticFeedbackForEsc</key>
 	<false/>
-	<key>HideScrollbar</key>
-	<true/>
 	<key>HotkeyMigratedFromSingleToMulti</key>
 	<true/>
 	<key>NeverWarnAboutShortLivedSessions_4B72CAFB-ADC5-4587-8F15-C3ED6D2C00E7</key>
@@ -690,7 +688,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>IosevkaNerdFontComplete-Term 16</string>
+			<string>Iosevka-Term 16</string>
 			<key>Only The Default BG Color Uses Transparency</key>
 			<true/>
 			<key>Option Key Sends</key>
