@@ -223,6 +223,7 @@
       fi
 
       source $HOME/.waverc 2> /dev/null
+      source "$HOME/.cargo/env"
       '';
   };
 
