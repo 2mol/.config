@@ -25,7 +25,7 @@
     htop tmux tmate coreutils
     curl wget
     aria2 # httpie
-    unar killall sshfs parallel
+    unar killall parallel # sshfs
     difftastic
     pandoc
 
@@ -38,10 +38,10 @@
 
     # other useful tools
     shellcheck entr watch
-    sqlite-interactive sqlite-utils
+    sqlite-interactive # sqlite-utils
     xmlstarlet
     qrencode # image_optim (not supported on M1)
-    graphviz ffmpeg imagemagick
+    graphviz imagemagick ffmpeg-full
     yt-dlp
     opusTools vorbis-tools
 
@@ -57,13 +57,15 @@
     lazygit
 
     # Wave
-    yarn vault # semgrep (no M1)
-    (google-cloud-sdk.withExtraComponents [google-cloud-sdk.components.gke-gcloud-auth-plugin])
+    yarn
+    # (google-cloud-sdk.withExtraComponents [google-cloud-sdk.components.gke-gcloud-auth-plugin])
+    vault
     redis
     openjdk
     rbenv pyenv
     watchman
     pgcli
+    semgrep
     yamlfmt
 
     # fonts
