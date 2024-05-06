@@ -182,25 +182,29 @@
       DISABLE_MAGIC_FUNCTIONS=true;
     };
 
-    oh-my-zsh = {
-      enable = true;
-      plugins = [ "git" ];
-    };
+    #oh-my-zsh = {
+    #  enable = true;
+    #  plugins = [ "git" ];
+    #};
 
-    plugins = [
-      {
-        name = "powerlevel10k";
-        src = pkgs.zsh-powerlevel10k;
-        file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-      }
-      {
-        name = "powerlevel10k-config";
-        src = lib.cleanSource ./.;
-        file = "p10k.zsh";
-      }
-    ];
+    #plugins = [
+    #  {
+    #    name = "powerlevel10k";
+    #    src = pkgs.zsh-powerlevel10k;
+    #    file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+    #  }
+    #  {
+    #    name = "powerlevel10k-config";
+    #    src = lib.cleanSource ./.;
+    #    file = "p10k.zsh";
+    #  }
+    #];
 
     initExtra = ''
+      source ${pkgs.grml-zsh-config}/etc/zsh/zshrc
+      zstyle ':prompt:grml:right:setup' items
+      zstyle ':prompt:grml:left:setup' items rc user path vcs percent
+
       HISTFILE=$HOME/.zsh_history_uncut
       HISTSIZE=999999
       SAVEHIST=999999
@@ -224,8 +228,12 @@
         . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
       fi
 
-      source $HOME/.waverc 2> /dev/null
-      source "$HOME/.cargo/env"
+      if command -v fzf-share >/dev/null; then
+        source "$(fzf-share)/key-bindings.zsh"
+        source "$(fzf-share)/completion.zsh"
+      fi
+
+      # source $HOME/.waverc 2> /dev/null
       '';
   };
 
@@ -237,3 +245,4 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
+
