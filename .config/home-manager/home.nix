@@ -53,18 +53,17 @@
     zola #restic
     ngrok
     #docker colima
-    pspg # (still broken?) pgcli
     lazygit
 
     # Wave
     yarn
     # (google-cloud-sdk.withExtraComponents [google-cloud-sdk.components.gke-gcloud-auth-plugin])
-    vault
+    # vault
     redis
     openjdk
     rbenv pyenv
+    pspg # (still broken?) pgcli
     watchman
-    pgcli
     semgrep
     yamlfmt
 
@@ -233,14 +232,14 @@
         source "$(fzf-share)/completion.zsh"
       fi
 
-      # source $HOME/.waverc 2> /dev/null
+      source $HOME/.waverc 2> /dev/null
       '';
   };
 
-  programs.fzf = {
-    enable = true;
-    enableZshIntegration = true;
-  };
+  #programs.fzf = {
+  #  enable = true;
+  #  enableZshIntegration = true;
+  #};
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
