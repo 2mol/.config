@@ -4,6 +4,8 @@
 <dict>
 	<key>AlternateMouseScroll</key>
 	<true/>
+	<key>ClickToSelectCommand</key>
+	<false/>
 	<key>Default Bookmark Guid</key>
 	<string>4B72CAFB-ADC5-4587-8F15-C3ED6D2C00E7</string>
 	<key>HapticFeedbackForEsc</key>

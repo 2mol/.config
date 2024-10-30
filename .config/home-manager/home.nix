@@ -22,7 +22,7 @@
     nix-info
     # Unix basics
     git git-lfs git-crypt
-    htop tmux tmate coreutils
+    htop tmux tmate #coreutils
     curl wget
     aria2 # httpie
     unar killall parallel # sshfs
@@ -35,6 +35,7 @@
     # Nu-Unix excellence
     ripgrep fd fzf bat eza jq
     micro glow helix
+    jujutsu
 
     # other useful tools
     shellcheck entr watch
@@ -43,7 +44,7 @@
     qrencode # image_optim (not supported on M1)
     graphviz imagemagick ffmpeg-full
     yt-dlp
-    opusTools vorbis-tools
+    opusTools # vorbis-tools
 
     # Nix utils
     direnv nix-direnv
@@ -64,41 +65,42 @@
     rbenv pyenv
     pspg # (still broken?) pgcli
     watchman
-    semgrep
     yamlfmt
 
     # fonts
     meslo-lgs-nf iosevka-bin hack-font
-    ibm-plex inter jetbrains-mono
+    inter jetbrains-mono # ibm-plex
 
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
+    # It is sometimes useful to fine-tune packages, for example, by applying
+    # overrides. You can do that directly here, just don't forget the
+    # parentheses. Maybe you want to install Nerd Fonts with a limited number of
+    # fonts?
     # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
 
-    # # You can also create simple shell scripts directly inside your
-    # # configuration. For example, this adds a command 'my-hello' to your
-    # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
+    # You can also create simple shell scripts directly inside your
+    # configuration. For example, this adds a command 'my-hello' to your
+    # environment:
+    (pkgs.writeShellScriptBin "my-hello" ''
+      echo "Hello, ${config.home.username}!"
+    '')
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
+    # Building this configuration will create a copy of 'dotfiles/screenrc' in
+    # the Nix store. Activating the configuration will then make '~/.screenrc' a
+    # symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
 
-    # # You can also set the file content immediately.
+    # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
   };
+
+
 
   # You can also manage environment variables but you will have to manually
   # source
@@ -161,8 +163,43 @@
     };
   };
 
-  programs.zsh = {
+  programs.fish = {
     enable = true;
+    interactiveShellInit = ''
+      set fish_greeting # Disable greeting
+      # Source nix. If this ever feels slow, consider using
+      # https://github.com/kidonng/nix.fish instead
+      if test -e /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+          fenv source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+      end
+
+      fish_add_path /opt/homebrew/bin
+      fish_add_path $HOME/.local/bin
+
+      set -x FZF_DEFAULT_OPTS "--layout=default"
+
+      set -x ZVM_INSTALL "$HOME/.zvm/self"
+      fish_add_path $HOME/.zvm/bin
+      fish_add_path $ZVM_INSTALL
+    '';
+    plugins = [
+      { name = "foreign-env"; src = pkgs.fishPlugins.foreign-env.src; }
+      { name = "fzf-fish"; src = pkgs.fishPlugins.fzf-fish.src; }
+    ];
+    shellAliases = {
+      l = "eza --group-directories-first";
+      ls = "eza --group-directories-first";
+      ll = "eza -l --group-directories-first";
+      la = "eza -la --group-directories-first";
+      less = "less -R"; # TODO: this prob only works on mac
+      tf = "terraform";
+      config = "git --git-dir=$HOME/.cfg/ --work-tree=$HOME";
+      config-help = "glow $HOME/.config/README.md";
+    };
+  };
+
+  programs.zsh = {
+    enable = false;
     enableCompletion = true;
     shellAliases = {
       l = "eza --group-directories-first";
@@ -180,24 +217,6 @@
       # stuff when copy-pasting URLs for example)
       DISABLE_MAGIC_FUNCTIONS=true;
     };
-
-    #oh-my-zsh = {
-    #  enable = true;
-    #  plugins = [ "git" ];
-    #};
-
-    #plugins = [
-    #  {
-    #    name = "powerlevel10k";
-    #    src = pkgs.zsh-powerlevel10k;
-    #    file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-    #  }
-    #  {
-    #    name = "powerlevel10k-config";
-    #    src = lib.cleanSource ./.;
-    #    file = "p10k.zsh";
-    #  }
-    #];
 
     initExtra = ''
       source ${pkgs.grml-zsh-config}/etc/zsh/zshrc
@@ -235,11 +254,6 @@
       source $HOME/.waverc 2> /dev/null
       '';
   };
-
-  #programs.fzf = {
-  #  enable = true;
-  #  enableZshIntegration = true;
-  #};
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
