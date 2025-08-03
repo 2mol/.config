@@ -181,6 +181,10 @@
       set -x ZVM_INSTALL "$HOME/.zvm/self"
       fish_add_path $HOME/.zvm/bin
       fish_add_path $ZVM_INSTALL
+
+      function fish_user_key_bindings
+        bind \cc 'echo; commandline | cat; commandline ""; commandline -f repaint'
+      end
     '';
     plugins = [
       { name = "foreign-env"; src = pkgs.fishPlugins.foreign-env.src; }
@@ -196,6 +200,11 @@
       config = "git --git-dir=$HOME/.cfg/ --work-tree=$HOME";
       config-help = "glow $HOME/.config/README.md";
     };
+  };
+
+  programs.direnv = {
+   enable = true;
+   nix-direnv.enable = true;
   };
 
   programs.zsh = {
